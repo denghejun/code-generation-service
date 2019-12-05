@@ -16,6 +16,12 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <tables>T_POLICY_PRD_LIAB_PARAM,T_POLICY_PROD_LIAB</tables>
+        <jdbcDriver>oracle.jdbc.OracleDriver</jdbcDriver>
+        <jdbcUrl>jdbc:oracle:thin:@10.137.195.24:31220/xe</jdbcUrl>
+        <jdbcUser>system</jdbcUser>
+        <jdbcPassword>oracle</jdbcPassword>
+        <packageName>com.generation.model</packageName>
     </properties>
 
     <dependencies>
@@ -58,6 +64,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>build-info</id>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
@@ -72,12 +86,12 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <jdbcDriver>oracle.jdbc.OracleDriver</jdbcDriver>
-                    <jdbcUrl>jdbc:oracle:thin:@10.137.195.24:31220/xe</jdbcUrl>
-                    <jdbcUser>system</jdbcUser>
-                    <jdbcPassword>oracle</jdbcPassword>
-                    <packageName>oracle.model</packageName>
-                    <tableNamePattern>T_POLICY_PRD_LIAB_PARAM</tableNamePattern>
+                    <jdbcDriver>${jdbcDriver}</jdbcDriver>
+                    <jdbcUrl>${jdbcUrl}</jdbcUrl>
+                    <jdbcUser>${jdbcUser}</jdbcUser>
+                    <jdbcPassword>${jdbcPassword}</jdbcPassword>
+                    <packageName>${packageName}</packageName>
+                    <tableNamePattern>${tables}</tableNamePattern>
                     <targetFolder>${project.basedir}/target/generated-sources/java</targetFolder>
                     <exportBeans>true</exportBeans>
                     <sourceFolder/>
