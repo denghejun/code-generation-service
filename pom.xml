@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.2.1.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.spike</groupId>
     <artifactId>code-generation-service</artifactId>
@@ -30,8 +30,15 @@
 
         <dependency>
             <groupId>com.oracle.ojdbc</groupId>
-            <artifactId>ojdbc8</artifactId>
-            <scope>runtime</scope>
+            <artifactId>ojdbc7</artifactId>
+            <scope>system</scope>
+            <version>12.1.0.1</version>
+            <systemPath>${project.basedir}/lib/ojdbc7-12.1.0.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-sql</artifactId>
+            <version>4.2.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -51,6 +58,39 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-maven-plugin</artifactId>
+                <version>4.2.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>export</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jdbcDriver>oracle.jdbc.OracleDriver</jdbcDriver>
+                    <jdbcUrl>jdbc:oracle:thin:@10.137.195.24:31220/xe</jdbcUrl>
+                    <jdbcUser>system</jdbcUser>
+                    <jdbcPassword>oracle</jdbcPassword>
+                    <packageName>oracle.model</packageName>
+                    <tableNamePattern>T_POLICY_PRD_LIAB_PARAM</tableNamePattern>
+                    <targetFolder>${project.basedir}/target/generated-sources/java</targetFolder>
+                    <exportBeans>true</exportBeans>
+                    <sourceFolder/>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.oracle.jdbc</groupId>
+                        <artifactId>ojdbc7</artifactId>
+                        <scope>system</scope>
+                        <version>12.1.0.1</version>
+                        <systemPath>${project.basedir}/lib/ojdbc7-12.1.0.1.jar</systemPath>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
