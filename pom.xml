@@ -8,11 +8,11 @@
         <version>2.2.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.picc</groupId>
+    <groupId>com.spike</groupId>
     <artifactId>code-generation-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>code-generation-service</name>
-    <description>picc code generation online service</description>
+    <description>spike code generation online service</description>
 
     <properties>
         <java.version>1.8</java.version>

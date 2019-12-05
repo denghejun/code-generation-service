@@ -1,4 +1,4 @@
-package com.picc.codegenerationservice;
+package com.spike.codegenerationservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
