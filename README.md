@@ -1,5 +1,8 @@
 ## JDK 1.8 is required
 ## Brief Instruction Guide
+
+This project will generate CRUD DAO repository automatically based on JDBI SQL Object.
+
 #### 1. How To Execute
 These parameters below are all optional, you can pass them into maven.
 ```
@@ -22,6 +25,9 @@ e.g.
 
 #### javapoet
 https://github.com/square/javapoet
+
+#### JDBI SQL Objects
+http://jdbi.org/#_sql_objects
 
 #### Else
  In spring boot application, all configuration value in `application.yml` can also be passed into.
