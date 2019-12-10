@@ -18,3 +18,11 @@ e.g.
 ```
 ./mvnw clean install spring-boot:run -Dtables=MyCustomTableNameOnly
 ```
+
+
+#### Else
+ In spring boot application, all configuration value in `application.yml` can also be passed into.
+ e.g.
+ ```
+./mvnw clean install spring-boot:run -Dmanagement.endpoint.restart.enabled=false
+```
