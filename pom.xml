@@ -18,22 +18,29 @@
         <java.version>1.8</java.version>
         <tables>T_POLICY_PRD_LIAB_PARAM,T_POLICY_PROD_LIAB</tables>
         <jdbcDriver>oracle.jdbc.OracleDriver</jdbcDriver>
-        <jdbcUrl>jdbc:oracle:thin:@10.137.195.24:31220/xe</jdbcUrl>
+        <jdbcUrl>jdbc:oracle:thin:@10.137.195.24:31236/xe</jdbcUrl>
         <jdbcUser>system</jdbcUser>
         <jdbcPassword>oracle</jdbcPassword>
         <packageName>com.generation.model</packageName>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Greenwich.SR2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.boot</groupId>-->
-        <!--            <artifactId>spring-boot-starter-data-jdbc</artifactId>-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.oracle.ojdbc</groupId>
             <artifactId>ojdbc7</artifactId>
@@ -57,6 +64,24 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>com.squareup</groupId>
+            <artifactId>javapoet</artifactId>
+            <version>1.11.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.4</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -64,16 +89,8 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>build-info</id>
-                        <goals>
-                            <goal>build-info</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <version>2.1.2.RELEASE</version>
             </plugin>
-
             <plugin>
                 <groupId>com.querydsl</groupId>
                 <artifactId>querydsl-maven-plugin</artifactId>
@@ -108,5 +125,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

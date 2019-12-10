@@ -1,2 +1,8 @@
 server:
   port: 32388
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    restart:
+      enabled: true
