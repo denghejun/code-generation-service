@@ -20,6 +20,8 @@ public class Main {
     public void onApplicationReadyEvent() {
         try {
             this.generator.generate();
+        } catch (Exception e) {
+            this.log.error(e.getMessage(), e);
         } finally {
             this.application.shutdown();
         }

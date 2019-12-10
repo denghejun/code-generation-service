@@ -6,7 +6,9 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class Generator {
+    private final JdbiOperationsForTest jdbiOperationsFortest = new JdbiOperationsForTest();
+
     public void generate() {
-        this.log.info("Doing work ...5s");
+        jdbiOperationsFortest.jdbiOperation();
     }
 }
