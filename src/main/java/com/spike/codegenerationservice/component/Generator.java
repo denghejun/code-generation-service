@@ -1,14 +1,36 @@
 package com.spike.codegenerationservice.component;
 
+import com.google.common.reflect.ClassPath.ClassInfo;
+import com.spike.codegenerationservice.refleciton.ClassLocator;
+import com.spike.codegenerationservice.refleciton.QClassInstanceLocator;
+import com.spike.codegenerationservice.refleciton.QClassMethodLocator;
+import com.spike.codegenerationservice.refleciton.QClassMethodNameEnum;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 @Slf4j
+@AllArgsConstructor
 public class Generator {
-    private final JdbiOperationsForTest jdbiOperationsFortest = new JdbiOperationsForTest();
+
+    private ClassLocator classLocator;
+    private QClassInstanceLocator qClassInstanceLocator;
+    private QClassMethodLocator qClassMethodLocator;
 
     public void generate() {
-        jdbiOperationsFortest.jdbiOperation();
+        String packageName = "com.generation.model";
+        List<ClassInfo> classInfos = this.classLocator.getClassInfos(packageName, className -> className.startsWith("QT"));
+        for (ClassInfo classInfo : classInfos) {
+            Object instance = this.qClassInstanceLocator.getInstance(classInfo);
+            Object value = this.qClassMethodLocator.invoke(instance, QClassMethodNameEnum.GET_TABLE_NAME);
+            log.debug(value.toString());
+        }
     }
 }
+
+
+

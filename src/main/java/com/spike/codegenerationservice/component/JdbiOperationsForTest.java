@@ -49,5 +49,15 @@ public class JdbiOperationsForTest {
         jdbi.useExtension(TPolicyProdLiabRepo.class, repo -> repo.delete(100l));
         List<TPolicyProdLiab> noList = jdbi.withExtension(TPolicyProdLiabRepo.class, repo -> repo.findAll());
         this.log.info("noList: " + noList.size());
+
+
+        //                List<Path<?>> paths = tPolicyProdLiab.getColumns();
+        //                tPolicyProdLiab.getTableName();
+        //                tPolicyProdLiab.getPrimaryKey();
+        //                tPolicyProdLiab.getMetadata();
+        //                for (Path path : paths) {
+        //                    ColumnMetadata metadata = tPolicyProdLiab.getMetadata(path);
+        //                    this.log.debug(metadata.getName());
+        //                }
     }
 }
