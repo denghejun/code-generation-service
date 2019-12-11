@@ -11,7 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 @Component
 public class QClassMethodLocator {
 
-    public Object invoke(Object instance, QClassMethodNameEnum methodName) {
+    public Object run(Object instance, QClassMethodNameEnum methodName) {
         Class<?> clazz = instance.getClass();
         TypeToken<?> typeToken = TypeToken.of(clazz);
         Object value = null;
