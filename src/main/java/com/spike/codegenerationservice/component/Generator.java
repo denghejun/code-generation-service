@@ -15,7 +15,6 @@ import java.util.List;
 @Slf4j
 @AllArgsConstructor
 public class Generator {
-
     private ClassLocator classLocator;
     private QClassInstanceLocator qClassInstanceLocator;
     private QClassMethodLocator qClassMethodLocator;
