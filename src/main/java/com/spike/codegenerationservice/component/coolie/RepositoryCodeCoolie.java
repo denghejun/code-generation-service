@@ -3,7 +3,7 @@ package com.spike.codegenerationservice.component.coolie;
 import com.spike.codegenerationservice.component.coolie.abstraction.Coolie;
 import com.spike.codegenerationservice.component.coolie.method.*;
 import com.spike.codegenerationservice.configuration.GlobalConfig;
-import com.spike.codegenerationservice.model.ReflectionDataTable;
+import com.spike.codegenerationservice.model.DataTable;
 import com.squareup.javapoet.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,7 @@ import java.util.List;
 @Component
 @AllArgsConstructor
 @Slf4j
-public class RepositoryCodeCoolie extends Coolie<List<ReflectionDataTable>, String> {
+public class RepositoryCodeCoolie extends Coolie<List<DataTable>, String> {
 
     public static final String SUFFIX_REPOSITORY = "Repository";
 
@@ -28,8 +28,8 @@ public class RepositoryCodeCoolie extends Coolie<List<ReflectionDataTable>, Stri
     private MethodRByIdCoolie methodRByIdCoolie;
 
     @Override
-    public String build(List<ReflectionDataTable> food) {
-        for (ReflectionDataTable table : food) {
+    public String build(List<DataTable> food) {
+        for (DataTable table : food) {
             try {
                 String interfaceName = table.getName() + SUFFIX_REPOSITORY;
                 TypeSpec repositoryTypeSpec = TypeSpec.interfaceBuilder(interfaceName)

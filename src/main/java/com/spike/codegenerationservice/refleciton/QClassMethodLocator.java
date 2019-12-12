@@ -3,8 +3,8 @@ package com.spike.codegenerationservice.refleciton;
 import com.querydsl.core.types.Path;
 import com.querydsl.sql.ColumnMetadata;
 import com.querydsl.sql.PrimaryKey;
-import com.spike.codegenerationservice.model.ReflectionDataColumn;
-import com.spike.codegenerationservice.model.ReflectionDataTable;
+import com.spike.codegenerationservice.model.DataColumn;
+import com.spike.codegenerationservice.model.DataTable;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -31,14 +31,14 @@ public class QClassMethodLocator {
         return (ArrayList) ((PrimaryKey) this.classMethodLocator.run(qInstance, QClassMethodNameEnum.GET_PRIMARY_KEY)).getLocalColumns().stream().collect(Collectors.toList());
     }
 
-    private List<ReflectionDataColumn> getColumns(Object qInstance) {
+    private List<DataColumn> getColumns(Object qInstance) {
         ArrayList columns = (ArrayList) this.classMethodLocator.run(qInstance, QClassMethodNameEnum.GET_COLUMNS);
-        return (List<ReflectionDataColumn>) columns.stream().map(col -> {
+        return (List<DataColumn>) columns.stream().map(col -> {
             String name = ((Path) col).getMetadata().getName();
             String metaName = this.getMetaColumnName(qInstance, (Path) col);
             ArrayList primaryKeys = this.getPrimaryKeys(qInstance);
             boolean isPrimaryKey = primaryKeys.stream().anyMatch(c -> Objects.equals(((Path) c).getMetadata().getName(), name));
-            return new ReflectionDataColumn(null, name, metaName, isPrimaryKey);
+            return new DataColumn(null, name, metaName, isPrimaryKey);
         }).collect(Collectors.toList());
     }
 
@@ -46,8 +46,8 @@ public class QClassMethodLocator {
         return this.classMethodLocator.run(qInstance, QClassMethodNameEnum.GET_TABLE_NAME).toString();
     }
 
-    public ReflectionDataTable getTables(Object qInstance) {
-        ReflectionDataTable table = new ReflectionDataTable();
+    public DataTable getTables(Object qInstance) {
+        DataTable table = new DataTable();
         table.setClazz(null);
         table.setName(qInstance.getClass().getSimpleName().substring(1));
         table.setMetaName(this.getTableName(qInstance));

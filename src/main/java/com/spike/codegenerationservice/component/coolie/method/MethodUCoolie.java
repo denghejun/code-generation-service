@@ -2,7 +2,7 @@ package com.spike.codegenerationservice.component.coolie.method;
 
 import com.spike.codegenerationservice.component.coolie.abstraction.MethodSpecCoolie;
 import com.spike.codegenerationservice.component.coolie.sql.SQLUCoolie;
-import com.spike.codegenerationservice.model.ReflectionDataTable;
+import com.spike.codegenerationservice.model.DataTable;
 import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.ParameterSpec;
@@ -23,7 +23,7 @@ public class MethodUCoolie extends MethodSpecCoolie {
     private SQLUCoolie sqluCoolie;
 
     @Override
-    public MethodSpec build(ReflectionDataTable table) {
+    public MethodSpec build(DataTable table) {
         return MethodSpec.methodBuilder(METHOD_NAME_U)
                 .addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
                 .returns(void.class)

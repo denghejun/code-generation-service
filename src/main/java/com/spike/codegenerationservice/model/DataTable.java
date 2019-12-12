@@ -8,20 +8,22 @@ import java.util.stream.Collectors;
 
 @Getter
 @Setter
-public class ReflectionDataTable {
+public class DataTable {
     private Class<?> clazz;
     private String name;
     private String metaName;
-    private List<ReflectionDataColumn> columns;
+    private List<DataColumn> columns;
 
-    public List<ReflectionDataColumn> getPrimaryColumns() {
+    public List<DataColumn> getPrimaryColumns() {
         return columns == null ? null : columns.stream().filter(col -> col.isPrimaryKey()).collect(Collectors.toList());
     }
 
     @Override
     public String toString() {
-        return "ReflectionDataTable{" +
-                "metaName='" + metaName + '\'' +
+        return "DataTable{" +
+                "clazz=" + clazz +
+                ", name='" + name + '\'' +
+                ", metaName='" + metaName + '\'' +
                 ", columns=" + columns +
                 '}';
     }

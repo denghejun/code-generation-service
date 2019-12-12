@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class ReflectionDataColumn {
+public class DataColumn {
     private Class<?> clazz;
     private String name;
     private String metaName;
@@ -15,8 +15,9 @@ public class ReflectionDataColumn {
 
     @Override
     public String toString() {
-        return "ReflectionDataColumn{" +
-                "name='" + name + '\'' +
+        return "DataColumn{" +
+                "clazz=" + clazz +
+                ", name='" + name + '\'' +
                 ", metaName='" + metaName + '\'' +
                 ", primaryKey=" + primaryKey +
                 '}';
