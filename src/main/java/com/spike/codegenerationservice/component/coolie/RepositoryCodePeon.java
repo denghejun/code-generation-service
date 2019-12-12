@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Generated;
 import javax.lang.model.element.Modifier;
 import java.nio.file.Paths;
 import java.util.List;
@@ -34,8 +35,11 @@ public class RepositoryCodePeon extends Peon<List<DataTable>, String> {
                 String interfaceName = table.getName() + SUFFIX_REPOSITORY;
                 TypeSpec repositoryTypeSpec = TypeSpec.interfaceBuilder(interfaceName)
                         .addModifiers(Modifier.PUBLIC)
+                        .addAnnotation(AnnotationSpec.builder(Generated.class)
+                                .addMember("value", "$S", RepositoryCodePeon.class)
+                                .build())
                         .addMethod(this.methodCCoolie.build(table))
-                        .addMethod(this.methodRCoolie.build(table))
+                        // .addMethod(this.methodRCoolie.build(table))
                         .addMethod(this.methodUCoolie.build(table))
                         .addMethod(this.methodDCoolie.build(table))
                         .addMethod(this.methodRByIdCoolie.build(table))
