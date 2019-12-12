@@ -17,7 +17,7 @@ import java.util.List;
 @Component
 @AllArgsConstructor
 @Slf4j
-public class RepoCodingCoolie extends Coolie<List<ReflectionDataTable>, String> {
+public class RepositoryCodeCoolie extends Coolie<List<ReflectionDataTable>, String> {
 
     public static final String SUFFIX_REPOSITORY = "Repository";
     public static final String METHOD_NAME_C = "insert";
@@ -27,7 +27,7 @@ public class RepoCodingCoolie extends Coolie<List<ReflectionDataTable>, String> 
     public static final String METHOD_NAME_D = "delete";
     public static final String PARAMETER_NAME_ENTITY = "entity";
     public static final String ANNOTATION_MEMBER_VALUE = "value";
-    public static final String ANNOTATION_MEMBER_VALUE_FORMART = "$S";
+    public static final String ANNOTATION_MEMBER_VALUE_FORMAT = "$S";
 
     private SQLCoolie sqlCoolie;
 
@@ -65,7 +65,7 @@ public class RepoCodingCoolie extends Coolie<List<ReflectionDataTable>, String> 
                 .returns(void.class)
                 .addAnnotation(AnnotationSpec.builder(SqlUpdate.class)
                         .addMember(ANNOTATION_MEMBER_VALUE,
-                                ANNOTATION_MEMBER_VALUE_FORMART,
+                                ANNOTATION_MEMBER_VALUE_FORMAT,
                                 this.sqlCoolie.build(table).C)
                         .build())
                 .addParameter(ParameterSpec.builder(table.getClazz(), PARAMETER_NAME_ENTITY)
@@ -80,7 +80,7 @@ public class RepoCodingCoolie extends Coolie<List<ReflectionDataTable>, String> 
                 .returns(void.class)
                 .addAnnotation(AnnotationSpec.builder(SqlUpdate.class)
                         .addMember(ANNOTATION_MEMBER_VALUE,
-                                ANNOTATION_MEMBER_VALUE_FORMART,
+                                ANNOTATION_MEMBER_VALUE_FORMAT,
                                 this.sqlCoolie.build(table).R)
                         .build())
                 .addParameter(ParameterSpec.builder(table.getClazz(), PARAMETER_NAME_ENTITY)
@@ -95,7 +95,7 @@ public class RepoCodingCoolie extends Coolie<List<ReflectionDataTable>, String> 
                 .returns(void.class)
                 .addAnnotation(AnnotationSpec.builder(SqlUpdate.class)
                         .addMember(ANNOTATION_MEMBER_VALUE,
-                                ANNOTATION_MEMBER_VALUE_FORMART,
+                                ANNOTATION_MEMBER_VALUE_FORMAT,
                                 this.sqlCoolie.build(table).R_BY_ID)
                         .build())
                 .addParameter(ParameterSpec.builder(table.getClazz(), PARAMETER_NAME_ENTITY)
@@ -110,7 +110,7 @@ public class RepoCodingCoolie extends Coolie<List<ReflectionDataTable>, String> 
                 .returns(void.class)
                 .addAnnotation(AnnotationSpec.builder(SqlUpdate.class)
                         .addMember(ANNOTATION_MEMBER_VALUE,
-                                ANNOTATION_MEMBER_VALUE_FORMART,
+                                ANNOTATION_MEMBER_VALUE_FORMAT,
                                 this.sqlCoolie.build(table).U)
                         .build())
                 .addParameter(ParameterSpec.builder(table.getClazz(), PARAMETER_NAME_ENTITY)
@@ -125,7 +125,7 @@ public class RepoCodingCoolie extends Coolie<List<ReflectionDataTable>, String> 
                 .returns(void.class)
                 .addAnnotation(AnnotationSpec.builder(SqlUpdate.class)
                         .addMember(ANNOTATION_MEMBER_VALUE,
-                                ANNOTATION_MEMBER_VALUE_FORMART,
+                                ANNOTATION_MEMBER_VALUE_FORMAT,
                                 this.sqlCoolie.build(table).D)
                         .build())
                 .addParameter(ParameterSpec.builder(table.getClazz(), PARAMETER_NAME_ENTITY)

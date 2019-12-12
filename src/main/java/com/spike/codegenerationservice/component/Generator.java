@@ -1,7 +1,7 @@
 package com.spike.codegenerationservice.component;
 
 import com.spike.codegenerationservice.component.coolie.DatabaseCoolie;
-import com.spike.codegenerationservice.component.coolie.RepoCodingCoolie;
+import com.spike.codegenerationservice.component.coolie.RepositoryCodeCoolie;
 import com.spike.codegenerationservice.configuration.GlobalConfig;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,11 +13,11 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class Generator {
     private DatabaseCoolie databaseCoolie;
-    private RepoCodingCoolie repoCodingCoolie;
+    private RepositoryCodeCoolie repositoryCodeCoolie;
 
     public void generate(GlobalConfig globalConfig) {
         var tables = this.databaseCoolie.build(globalConfig.getPackageName());
-        this.repoCodingCoolie.build(tables);
+        this.repositoryCodeCoolie.build(tables);
     }
 }
 
