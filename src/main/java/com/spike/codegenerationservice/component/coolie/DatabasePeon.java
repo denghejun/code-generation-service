@@ -2,7 +2,7 @@ package com.spike.codegenerationservice.component.coolie;
 
 import com.google.common.collect.Lists;
 import com.google.common.reflect.ClassPath.ClassInfo;
-import com.spike.codegenerationservice.component.coolie.abstraction.Coolie;
+import com.spike.codegenerationservice.component.coolie.abstraction.Peon;
 import com.spike.codegenerationservice.model.DataColumn;
 import com.spike.codegenerationservice.model.DataTable;
 import com.spike.codegenerationservice.refleciton.ClassLocator;
@@ -18,7 +18,7 @@ import java.util.function.Function;
 @Component
 @Slf4j
 @AllArgsConstructor
-public class DatabaseCoolie extends Coolie<String, List<DataTable>> {
+public class DatabasePeon extends Peon<String, List<DataTable>> {
     public static final Function<String, Boolean> FILTER_QT = className -> className.startsWith("Q");
     public static final Function<String, Boolean> FILTER_NON_QT = className -> !className.startsWith("Q");
     private ClassLocator classLocator;

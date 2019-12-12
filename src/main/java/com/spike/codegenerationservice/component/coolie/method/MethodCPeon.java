@@ -1,7 +1,7 @@
 package com.spike.codegenerationservice.component.coolie.method;
 
-import com.spike.codegenerationservice.component.coolie.abstraction.MethodSpecCoolie;
-import com.spike.codegenerationservice.component.coolie.sql.SQLDCoolie;
+import com.spike.codegenerationservice.component.coolie.abstraction.MethodSpecPeon;
+import com.spike.codegenerationservice.component.coolie.sql.SQLCPeon;
 import com.spike.codegenerationservice.model.DataTable;
 import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.MethodSpec;
@@ -17,20 +17,20 @@ import javax.lang.model.element.Modifier;
 @Component
 @AllArgsConstructor
 @Slf4j
-public class MethodDCoolie extends MethodSpecCoolie {
+public class MethodCPeon extends MethodSpecPeon {
 
-    private static final String METHOD_NAME_D = "delete";
-    private SQLDCoolie sqldCoolie;
+    private static final String METHOD_NAME_C = "insert";
+    private SQLCPeon sqlcCoolie;
 
     @Override
     public MethodSpec build(DataTable table) {
-        return MethodSpec.methodBuilder(METHOD_NAME_D)
+        return MethodSpec.methodBuilder(METHOD_NAME_C)
                 .addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
                 .returns(void.class)
                 .addAnnotation(AnnotationSpec.builder(SqlUpdate.class)
                         .addMember(ANNOTATION_MEMBER_VALUE,
                                 ANNOTATION_MEMBER_VALUE_FORMAT,
-                                this.sqldCoolie.build(table))
+                                this.sqlcCoolie.build(table))
                         .build())
                 .addParameter(ParameterSpec.builder(table.getClazz(), PARAMETER_NAME_ENTITY)
                         .addAnnotation(BindBean.class)
