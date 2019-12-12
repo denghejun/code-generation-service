@@ -36,7 +36,7 @@ public class RepositoryCodePeon extends Peon<List<DataTable>, String> {
                 TypeSpec repositoryTypeSpec = TypeSpec.interfaceBuilder(interfaceName)
                         .addModifiers(Modifier.PUBLIC)
                         .addAnnotation(AnnotationSpec.builder(Generated.class)
-                                .addMember("value", "$S", RepositoryCodePeon.class)
+                                .addMember("value", "$S", RepositoryCodePeon.class.getName())
                                 .build())
                         .addMethod(this.methodCPeon.build(table))
                         // .addMethod(this.methodRPeon.build(table))
