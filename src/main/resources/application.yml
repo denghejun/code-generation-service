@@ -7,7 +7,6 @@ management:
     restart:
       enabled: true
 config:
-  packageName: com.generation.model
-  tables:
-  jdbcUrl:
-  jdbcPassword:
+  packageName: com.generation.entity
+  repoPackageName: com.generation.repo
+  outputPath: target/generated-sources/java

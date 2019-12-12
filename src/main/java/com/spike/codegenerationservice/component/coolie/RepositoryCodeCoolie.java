@@ -1,6 +1,7 @@
 package com.spike.codegenerationservice.component.coolie;
 
 import com.spike.codegenerationservice.component.coolie.abstraction.Coolie;
+import com.spike.codegenerationservice.configuration.GlobalConfig;
 import com.spike.codegenerationservice.model.ReflectionDataTable;
 import com.squareup.javapoet.*;
 import lombok.AllArgsConstructor;
@@ -30,25 +31,25 @@ public class RepositoryCodeCoolie extends Coolie<List<ReflectionDataTable>, Stri
     public static final String ANNOTATION_MEMBER_VALUE_FORMAT = "$S";
 
     private SQLCoolie sqlCoolie;
+    private GlobalConfig globalConfig;
 
     @Override
     public String build(List<ReflectionDataTable> food) {
         for (ReflectionDataTable table : food) {
-            TypeSpec repositoryTypeSpec = this.buildClass(table.getName())
-                    .addMethod(this.buildC(table))
-                    .addMethod(this.buildR(table))
-                    .addMethod(this.buildU(table))
-                    .addMethod(this.buildD(table))
-                    .addMethod(this.buildRById(table))
-                    .build();
-
-            JavaFile javaFile = JavaFile.builder("com.example.helloworld", repositoryTypeSpec)
-                    .build();
-
             try {
-                javaFile.writeTo(Paths.get("target/generated-sources/java"));
-            } catch (IOException e) {
-                e.printStackTrace();
+                TypeSpec repositoryTypeSpec = this.buildClass(table.getName())
+                        .addMethod(this.buildC(table))
+                        .addMethod(this.buildR(table))
+                        .addMethod(this.buildU(table))
+                        .addMethod(this.buildD(table))
+                        .addMethod(this.buildRById(table))
+                        .build();
+
+                JavaFile.builder(globalConfig.getRepoPackageName(), repositoryTypeSpec)
+                        .build()
+                        .writeTo(Paths.get(globalConfig.getOutputPath()));
+            } catch (Exception e) {
+                log.error(e.getMessage(), e);
             }
         }
 

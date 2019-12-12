@@ -21,7 +21,7 @@
         <config.jdbcUrl>jdbc:oracle:thin:@10.137.195.24:7710/xe</config.jdbcUrl>
         <config.jdbcUser>system</config.jdbcUser>
         <config.jdbcPassword>oracle</config.jdbcPassword>
-        <config.packageName>com.generation.model</config.packageName>
+        <config.packageName>com.generation.entity</config.packageName>
     </properties>
 
     <dependencyManagement>

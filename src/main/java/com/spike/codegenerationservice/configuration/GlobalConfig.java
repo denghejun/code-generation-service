@@ -11,17 +11,15 @@ import org.springframework.context.annotation.Configuration;
 @Setter
 public class GlobalConfig {
     private String packageName;
-    private String tables;
-    private String jdbcUrl;
-    private String jdbcPassword;
+    private String repoPackageName;
+    private String outputPath;
 
     @Override
     public String toString() {
         return "GlobalConfig{" +
                 "packageName='" + packageName + '\'' +
-                ", tables='" + tables + '\'' +
-                ", jdbcUrl='" + jdbcUrl + '\'' +
-                ", jdbcPassword='" + jdbcPassword + '\'' +
+                ", repoPackageName='" + repoPackageName + '\'' +
+                ", outputPath='" + outputPath + '\'' +
                 '}';
     }
 }
