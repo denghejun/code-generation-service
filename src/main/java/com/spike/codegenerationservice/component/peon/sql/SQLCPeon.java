@@ -1,6 +1,6 @@
-package com.spike.codegenerationservice.component.coolie.sql;
+package com.spike.codegenerationservice.component.peon.sql;
 
-import com.spike.codegenerationservice.component.coolie.abstraction.SQLPeon;
+import com.spike.codegenerationservice.component.peon.abstraction.SQLPeon;
 import com.spike.codegenerationservice.model.DataTable;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

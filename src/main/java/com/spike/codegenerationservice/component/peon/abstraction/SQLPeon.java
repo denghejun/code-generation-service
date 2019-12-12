@@ -1,4 +1,4 @@
-package com.spike.codegenerationservice.component.coolie.abstraction;
+package com.spike.codegenerationservice.component.peon.abstraction;
 
 import com.spike.codegenerationservice.model.DataTable;
 

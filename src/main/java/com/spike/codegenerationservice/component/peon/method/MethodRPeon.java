@@ -1,7 +1,7 @@
-package com.spike.codegenerationservice.component.coolie.method;
+package com.spike.codegenerationservice.component.peon.method;
 
-import com.spike.codegenerationservice.component.coolie.abstraction.MethodSpecPeon;
-import com.spike.codegenerationservice.component.coolie.sql.SQLRPeon;
+import com.spike.codegenerationservice.component.peon.abstraction.MethodSpecPeon;
+import com.spike.codegenerationservice.component.peon.sql.SQLRPeon;
 import com.spike.codegenerationservice.model.DataTable;
 import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.MethodSpec;
@@ -20,7 +20,7 @@ import javax.lang.model.element.Modifier;
 public class MethodRPeon extends MethodSpecPeon {
 
     private static final String METHOD_NAME_R = "findAll";
-    private SQLRPeon sqlrCoolie;
+    private SQLRPeon sqlrPeon;
 
     @Override
     public MethodSpec build(DataTable table) {
@@ -30,7 +30,7 @@ public class MethodRPeon extends MethodSpecPeon {
                 .addAnnotation(AnnotationSpec.builder(SqlUpdate.class)
                         .addMember(ANNOTATION_MEMBER_VALUE,
                                 ANNOTATION_MEMBER_VALUE_FORMAT,
-                                this.sqlrCoolie.build(table))
+                                this.sqlrPeon.build(table))
                         .build())
                 .addParameter(ParameterSpec.builder(table.getClazz(), PARAMETER_NAME_ENTITY)
                         .addAnnotation(BindBean.class)

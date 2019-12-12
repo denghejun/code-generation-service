@@ -1,8 +1,8 @@
-package com.spike.codegenerationservice.component.coolie;
+package com.spike.codegenerationservice.component.peon;
 
 import com.google.common.collect.Lists;
 import com.google.common.reflect.ClassPath.ClassInfo;
-import com.spike.codegenerationservice.component.coolie.abstraction.Peon;
+import com.spike.codegenerationservice.component.peon.abstraction.Peon;
 import com.spike.codegenerationservice.model.DataColumn;
 import com.spike.codegenerationservice.model.DataTable;
 import com.spike.codegenerationservice.refleciton.ClassLocator;
