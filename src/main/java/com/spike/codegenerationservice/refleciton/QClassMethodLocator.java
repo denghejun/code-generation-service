@@ -48,6 +48,7 @@ public class QClassMethodLocator {
 
     public ReflectionDataTable getTables(Object qInstance) {
         ReflectionDataTable table = new ReflectionDataTable();
+        table.setName(qInstance.getClass().getSimpleName().substring(1));
         table.setMetaName(this.getTableName(qInstance));
         table.setColumns(this.getColumns(qInstance));
         return table;

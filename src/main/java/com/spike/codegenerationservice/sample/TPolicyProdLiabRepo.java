@@ -1,4 +1,4 @@
-package com.spike.codegenerationservice.repository;
+package com.spike.codegenerationservice.sample;
 
 import com.generation.model.TPolicyProdLiab;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;

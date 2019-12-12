@@ -1,4 +1,4 @@
-package com.spike.codegenerationservice.component;
+package com.spike.codegenerationservice.sample;
 
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;

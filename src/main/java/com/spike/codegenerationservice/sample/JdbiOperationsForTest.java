@@ -1,10 +1,10 @@
-package com.spike.codegenerationservice.component;
+package com.spike.codegenerationservice.sample;
 
 import com.generation.model.QTPolicyProdLiab;
 import com.generation.model.TPolicyProdLiab;
 import com.querydsl.core.types.Path;
 import com.querydsl.sql.ColumnMetadata;
-import com.spike.codegenerationservice.repository.TPolicyProdLiabRepo;
+import com.spike.codegenerationservice.sample.TPolicyProdLiabRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
