@@ -29,8 +29,8 @@ public class RepositoryCodePeon extends Peon<List<DataTable>, String> {
     private MethodRByIdPeon methodRByIdCoolie;
 
     @Override
-    public String build(List<DataTable> food) {
-        for (DataTable table : food) {
+    public String build(List<DataTable> dataTables) {
+        for (DataTable table : dataTables) {
             try {
                 String interfaceName = table.getName() + SUFFIX_REPOSITORY;
                 TypeSpec repositoryTypeSpec = TypeSpec.interfaceBuilder(interfaceName)
