@@ -10,7 +10,7 @@ import java.lang.reflect.Field;
 @Slf4j
 @Component
 public class QClassInstanceLocator {
-    public Object getInstance(ClassInfo classInfo) {
+    public Object getQClassInstance(ClassInfo classInfo) {
         String simpleName = classInfo.getSimpleName();
         Class<?> clzz = classInfo.load();
         Reflection.initialize(clzz);

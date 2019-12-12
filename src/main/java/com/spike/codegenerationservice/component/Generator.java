@@ -4,7 +4,7 @@ import com.google.common.reflect.ClassPath.ClassInfo;
 import com.spike.codegenerationservice.configuration.GlobalConfig;
 import com.spike.codegenerationservice.refleciton.ClassLocator;
 import com.spike.codegenerationservice.refleciton.QClassInstanceLocator;
-import com.spike.codegenerationservice.refleciton.QClassMethodLocator;
+import com.spike.codegenerationservice.refleciton.ClassMethodLocator;
 import com.spike.codegenerationservice.refleciton.QClassMethodNameEnum;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,13 +18,13 @@ import java.util.List;
 public class Generator {
     private ClassLocator classLocator;
     private QClassInstanceLocator qClassInstanceLocator;
-    private QClassMethodLocator qClassMethodLocator;
+    private ClassMethodLocator classMethodLocator;
 
     public void generate(GlobalConfig globalConfig) {
-        List<ClassInfo> classInfos = this.classLocator.getClassInfos(globalConfig.getPackageName(), className -> className.startsWith("QT"));
-        for (ClassInfo classInfo : classInfos) {
-            Object instance = this.qClassInstanceLocator.getInstance(classInfo);
-            Object value = this.qClassMethodLocator.run(instance, QClassMethodNameEnum.GET_TABLE_NAME);
+        List<ClassInfo> qClassInfos = this.classLocator.getClassInfos(globalConfig.getPackageName(), className -> className.startsWith("QT"));
+        for (ClassInfo qClass : qClassInfos) {
+            Object qInstance = this.qClassInstanceLocator.getQClassInstance(qClass);
+            Object value = this.classMethodLocator.run(qInstance, QClassMethodNameEnum.GET_TABLE_NAME);
             log.debug(value.toString());
         }
     }
