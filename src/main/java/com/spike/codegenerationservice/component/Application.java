@@ -15,12 +15,10 @@ public class Application {
     private ShutdownEndpoint shutdownEndpoint;
 
     public void restart() {
-        log.info("Application is going to be restart willfully ...");
         this.restartEndpoint.restart();
     }
 
     public void shutdown() {
-        log.info("Application is going to be shutdown willfully ...");
         this.shutdownEndpoint.shutdown();
     }
 }
