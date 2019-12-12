@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class ReflectionDataColumn {
+    private Class<?> clazz;
     private String name;
     private String metaName;
     private boolean primaryKey;

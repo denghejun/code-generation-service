@@ -1,22 +1,23 @@
 package com.spike.codegenerationservice.component;
 
+import com.spike.codegenerationservice.component.coolie.DatabaseCoolie;
+import com.spike.codegenerationservice.component.coolie.RepoCodingCoolie;
 import com.spike.codegenerationservice.configuration.GlobalConfig;
-import com.spike.codegenerationservice.model.ReflectionDataTable;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import lombok.var;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 @Slf4j
 @AllArgsConstructor
 public class Generator {
-
-    private Coolie coolie;
+    private DatabaseCoolie databaseCoolie;
+    private RepoCodingCoolie repoCodingCoolie;
 
     public void generate(GlobalConfig globalConfig) {
-        List<ReflectionDataTable> tables = this.coolie.buildDataTables(globalConfig.getPackageName());
+        var tables = this.databaseCoolie.build(globalConfig.getPackageName());
+        this.repoCodingCoolie.build(tables);
     }
 }
 

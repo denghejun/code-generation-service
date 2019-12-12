@@ -38,7 +38,7 @@ public class QClassMethodLocator {
             String metaName = this.getMetaColumnName(qInstance, (Path) col);
             ArrayList primaryKeys = this.getPrimaryKeys(qInstance);
             boolean isPrimaryKey = primaryKeys.stream().anyMatch(c -> Objects.equals(((Path) c).getMetadata().getName(), name));
-            return new ReflectionDataColumn(name, metaName, isPrimaryKey);
+            return new ReflectionDataColumn(null, name, metaName, isPrimaryKey);
         }).collect(Collectors.toList());
     }
 
@@ -48,6 +48,7 @@ public class QClassMethodLocator {
 
     public ReflectionDataTable getTables(Object qInstance) {
         ReflectionDataTable table = new ReflectionDataTable();
+        table.setClazz(null);
         table.setName(qInstance.getClass().getSimpleName().substring(1));
         table.setMetaName(this.getTableName(qInstance));
         table.setColumns(this.getColumns(qInstance));

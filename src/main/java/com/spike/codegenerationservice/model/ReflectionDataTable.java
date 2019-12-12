@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 public class ReflectionDataTable {
+    private Class<?> clazz;
     private String name;
     private String metaName;
     private List<ReflectionDataColumn> columns;
