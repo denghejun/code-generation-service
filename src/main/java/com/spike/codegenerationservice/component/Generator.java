@@ -1,6 +1,7 @@
 package com.spike.codegenerationservice.component;
 
 import com.google.common.reflect.ClassPath.ClassInfo;
+import com.spike.codegenerationservice.configuration.GlobalConfig;
 import com.spike.codegenerationservice.refleciton.ClassLocator;
 import com.spike.codegenerationservice.refleciton.QClassInstanceLocator;
 import com.spike.codegenerationservice.refleciton.QClassMethodLocator;
@@ -19,9 +20,8 @@ public class Generator {
     private QClassInstanceLocator qClassInstanceLocator;
     private QClassMethodLocator qClassMethodLocator;
 
-    public void generate() {
-        String packageName = "com.generation.model";
-        List<ClassInfo> classInfos = this.classLocator.getClassInfos(packageName, className -> className.startsWith("QT"));
+    public void generate(GlobalConfig globalConfig) {
+        List<ClassInfo> classInfos = this.classLocator.getClassInfos(globalConfig.getPackageName(), className -> className.startsWith("QT"));
         for (ClassInfo classInfo : classInfos) {
             Object instance = this.qClassInstanceLocator.getInstance(classInfo);
             Object value = this.qClassMethodLocator.run(instance, QClassMethodNameEnum.GET_TABLE_NAME);

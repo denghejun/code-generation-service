@@ -6,3 +6,8 @@ management:
       enabled: true
     restart:
       enabled: true
+config:
+  packageName: com.generation.model
+  tables:
+  jdbcUrl:
+  jdbcPassword:

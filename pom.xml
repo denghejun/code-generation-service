@@ -16,12 +16,12 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <tables>T_POLICY_PRD_LIAB_PARAM,T_POLICY_PROD_LIAB</tables>
-        <jdbcDriver>oracle.jdbc.OracleDriver</jdbcDriver>
-        <jdbcUrl>jdbc:oracle:thin:@10.137.195.24:31236/xe</jdbcUrl>
-        <jdbcUser>system</jdbcUser>
-        <jdbcPassword>oracle</jdbcPassword>
-        <packageName>com.generation.model</packageName>
+        <config.jdbcDriver>oracle.jdbc.OracleDriver</config.jdbcDriver>
+        <config.tables>T_POLICY_PRD_LIAB_PARAM,T_POLICY_PROD_LIAB</config.tables>
+        <config.jdbcUrl>jdbc:oracle:thin:@10.137.195.24:7710/xe</config.jdbcUrl>
+        <config.jdbcUser>system</config.jdbcUser>
+        <config.jdbcPassword>oracle</config.jdbcPassword>
+        <config.packageName>com.generation.model</config.packageName>
     </properties>
 
     <dependencyManagement>
@@ -118,12 +118,12 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <jdbcDriver>${jdbcDriver}</jdbcDriver>
-                    <jdbcUrl>${jdbcUrl}</jdbcUrl>
-                    <jdbcUser>${jdbcUser}</jdbcUser>
-                    <jdbcPassword>${jdbcPassword}</jdbcPassword>
-                    <packageName>${packageName}</packageName>
-                    <tableNamePattern>${tables}</tableNamePattern>
+                    <jdbcDriver>${config.jdbcDriver}</jdbcDriver>
+                    <jdbcUrl>${config.jdbcUrl}</jdbcUrl>
+                    <jdbcUser>${config.jdbcUser}</jdbcUser>
+                    <jdbcPassword>${config.jdbcPassword}</jdbcPassword>
+                    <packageName>${config.packageName}</packageName>
+                    <tableNamePattern>${config.tables}</tableNamePattern>
                     <targetFolder>${project.basedir}/target/generated-sources/java</targetFolder>
                     <exportBeans>true</exportBeans>
                     <sourceFolder/>
