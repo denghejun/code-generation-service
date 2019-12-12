@@ -11,7 +11,6 @@ import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 import org.springframework.stereotype.Component;
 
 import javax.lang.model.element.Modifier;
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
 
