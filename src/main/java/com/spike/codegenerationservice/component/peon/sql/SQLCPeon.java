@@ -15,24 +15,10 @@ public class SQLCPeon extends SQLPeon {
     private static String C = "INSERT INTO %s(%s) VALUES (%s)";
 
     @Override
-    public String build(DataTable table) {
-        var tableName = table.getMetaName();
-        var columns = this.buildColumns(table);
-        var values = this.buildValues(table);
-        return String.format(C, tableName, columns, values);
-    }
-
-    private String buildValues(DataTable table) {
-        return String.join(",", table.getColumns()
-                .stream()
-                .map(c -> ":" + c.getName())
-                .collect(Collectors.toList()));
-    }
-
-    private String buildColumns(DataTable table) {
-        return String.join(",", table.getColumns()
-                .stream()
-                .map(c -> c.getMetaName())
-                .collect(Collectors.toList()));
+    public String build(DataTable dataTable) {
+        var table = dataTable.getMetaName();
+        var columns = this.buildSelectBodyStatementForAllColumns(dataTable);
+        var values = this.buildValueStatementForAllColumns(dataTable);
+        return String.format(C, table, columns, values);
     }
 }
