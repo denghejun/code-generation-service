@@ -1,10 +1,9 @@
 package com.spike.codegenerationservice.component.peon.abstraction;
 
+import com.spike.codegenerationservice.model.DataColumn;
 import com.spike.codegenerationservice.model.DataTable;
-import com.squareup.javapoet.ClassName;
-import com.squareup.javapoet.MethodSpec;
-import com.squareup.javapoet.ParameterizedTypeName;
-import com.squareup.javapoet.TypeName;
+import com.squareup.javapoet.*;
+import lombok.var;
 
 public abstract class MethodSpecPeon extends Peon<DataTable, MethodSpec> {
     protected static final String PARAMETER_NAME_ENTITY = "entity";
@@ -16,5 +15,13 @@ public abstract class MethodSpecPeon extends Peon<DataTable, MethodSpec> {
         ClassName list = ClassName.get("java.util", "List");
         ClassName arrayList = ClassName.get("java.util", "ArrayList");
         return ParameterizedTypeName.get(list, entityClass);
+    }
+
+    protected void populateParametersBaseOnPrimaryColumns(DataTable table, MethodSpec.Builder builder) {
+        var primaryColumns = table.getPrimaryColumns();
+        for (DataColumn c : primaryColumns) {
+            builder.addParameter(ParameterSpec.builder(c.getClazz(), c.getName())
+                    .build());
+        }
     }
 }

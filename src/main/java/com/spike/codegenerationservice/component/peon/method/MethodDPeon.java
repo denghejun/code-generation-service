@@ -2,15 +2,11 @@ package com.spike.codegenerationservice.component.peon.method;
 
 import com.spike.codegenerationservice.component.peon.abstraction.MethodSpecPeon;
 import com.spike.codegenerationservice.component.peon.sql.SQLDPeon;
-import com.spike.codegenerationservice.model.DataColumn;
 import com.spike.codegenerationservice.model.DataTable;
 import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.MethodSpec;
-import com.squareup.javapoet.ParameterSpec;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lombok.var;
-import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 import org.springframework.stereotype.Component;
 
@@ -38,15 +34,7 @@ public class MethodDPeon extends MethodSpecPeon {
                                 ANNOTATION_MEMBER_VALUE_FORMAT,
                                 this.sqldPeon.build(table))
                         .build());
-        this.populateParameters(table, builder);
+        this.populateParametersBaseOnPrimaryColumns(table, builder);
         return builder.build();
-    }
-
-    private void populateParameters(DataTable table, MethodSpec.Builder builder) {
-        var primaryColumns = table.getPrimaryColumns();
-        for (DataColumn c : primaryColumns) {
-            builder.addParameter(ParameterSpec.builder(c.getClazz(), c.getName())
-                    .build());
-        }
     }
 }

@@ -35,7 +35,9 @@ public class MethodRPeon extends MethodSpecPeon {
                                 this.sqlrPeon.build(table))
                         .build())
                 .addAnnotation(AnnotationSpec.builder(RegisterBeanMapper.class)
-                        .addMember(ANNOTATION_MEMBER_VALUE, CodeBlock.builder().add(table.getName() + ".class").build())
+                        .addMember(ANNOTATION_MEMBER_VALUE, CodeBlock.builder()
+                                .add(table.getName() + ".class")
+                                .build())
                         .build())
                 .build();
     }
