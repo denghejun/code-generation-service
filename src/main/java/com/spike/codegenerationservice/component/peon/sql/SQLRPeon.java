@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class SQLRPeon extends SQLPeon {
 
-    private static String C = "INSERT INTO %s(%s) VALUES (%s)";
+    private static String R = "SELECT * FROM %s";
 
     @Override
     public String build(DataTable table) {
-        return "find all sql";
+        return String.format(R, table.getMetaName());
     }
 }

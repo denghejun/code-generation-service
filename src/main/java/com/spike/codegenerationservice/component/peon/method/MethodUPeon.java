@@ -19,7 +19,7 @@ import javax.lang.model.element.Modifier;
  * @SqlUpdate("UPDATE T_POLICY_PROD_LIAB SET ITEM_ID=:itemId, LIAB_ID=:liabId, LIAB_TYPE=:liabType
  * WHERE CONFIG_ID=:configId")
  * void update(@BindBean TPolicyProdLiab entity);
- * */
+ */
 @Component
 @AllArgsConstructor
 @Slf4j

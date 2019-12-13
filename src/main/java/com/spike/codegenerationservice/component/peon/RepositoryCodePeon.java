@@ -39,7 +39,7 @@ public class RepositoryCodePeon extends Peon<List<DataTable>, String> {
                                 .addMember("value", "$S", RepositoryCodePeon.class.getName())
                                 .build())
                         .addMethod(this.methodCPeon.build(table))
-                        // .addMethod(this.methodRPeon.build(table))
+                        .addMethod(this.methodRPeon.build(table))
                         .addMethod(this.methodUPeon.build(table))
                         .addMethod(this.methodDPeon.build(table))
                         .addMethod(this.methodRByIdPeon.build(table))
