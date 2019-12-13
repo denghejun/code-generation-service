@@ -14,6 +14,10 @@ import org.springframework.stereotype.Component;
 
 import javax.lang.model.element.Modifier;
 
+/**
+ * @SqlUpdate("DELETE FROM T_POLICY_PROD_LIAB WHERE CONFIG_ID=:configId")
+ * void delete(Long configId);
+ * */
 @Component
 @AllArgsConstructor
 @Slf4j

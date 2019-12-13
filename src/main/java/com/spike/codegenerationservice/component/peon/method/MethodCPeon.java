@@ -14,6 +14,11 @@ import org.springframework.stereotype.Component;
 
 import javax.lang.model.element.Modifier;
 
+/**
+ * @SqlUpdate("INSERT INTO T_POLICY_PROD_LIAB(CONFIG_ID, ITEM_ID, LIAB_ID, LIAB_TYPE)
+ * VALUES (:configId, :itemId, :liabId, :liabType)")
+ * void insert(@BindBean TPolicyProdLiab tPolicyProdLiab);
+ * */
 @Component
 @AllArgsConstructor
 @Slf4j

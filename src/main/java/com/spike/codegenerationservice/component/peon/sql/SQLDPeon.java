@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class SQLDPeon extends SQLPeon {
 
-    private static String C = "INSERT INTO %s(%s) VALUES (%s)";
+    private static String C = "DELETE FROM %s WHERE %s";
 
     @Override
     public String build(DataTable table) {

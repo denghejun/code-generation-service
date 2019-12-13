@@ -18,6 +18,10 @@ public class DataTable {
         return columns == null ? null : columns.stream().filter(col -> col.isPrimaryKey()).collect(Collectors.toList());
     }
 
+    public List<DataColumn> getNonPrimaryColumns() {
+        return columns == null ? null : columns.stream().filter(col -> !col.isPrimaryKey()).collect(Collectors.toList());
+    }
+
     @Override
     public String toString() {
         return "DataTable{" +
