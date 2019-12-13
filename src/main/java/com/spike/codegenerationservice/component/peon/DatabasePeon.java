@@ -10,6 +10,7 @@ import com.spike.codegenerationservice.refleciton.QClassInstanceLocator;
 import com.spike.codegenerationservice.refleciton.QClassMethodLocator;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import lombok.var;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,20 +20,21 @@ import java.util.function.Function;
 @Slf4j
 @AllArgsConstructor
 public class DatabasePeon extends Peon<String, List<DataTable>> {
-    public static final Function<String, Boolean> FILTER_QT = className -> className.startsWith("Q");
-    public static final Function<String, Boolean> FILTER_NON_QT = className -> !className.startsWith("Q");
+    private static final Function<String, Boolean> FILTER_QT = className -> className.startsWith("Q");
+    private static final Function<String, Boolean> FILTER_NON_QT = className -> !className.startsWith("Q");
     private ClassLocator classLocator;
     private QClassInstanceLocator qClassInstanceLocator;
     private QClassMethodLocator qClassMethodLocator;
 
     @Override
     public List<DataTable> build(String packageName) {
-        return this.populateNonQClassInfo(packageName, buildDataTables(packageName));
+        var dataTables = buildDataTables(packageName);
+        return this.populateNonQClassInfo(packageName, dataTables);
     }
 
-    private List<DataTable> buildDataTables(String food) {
+    private List<DataTable> buildDataTables(String packageName) {
         List<DataTable> dataTables = Lists.newArrayList();
-        List<ClassInfo> qClassInfos = this.classLocator.getClassInfos(food, FILTER_QT);
+        List<ClassInfo> qClassInfos = this.classLocator.getClassInfos(packageName, FILTER_QT);
         for (ClassInfo qClass : qClassInfos) {
             Object qInstance = this.qClassInstanceLocator.getQClassInstance(qClass);
             DataTable table = this.qClassMethodLocator.getTables(qInstance);
